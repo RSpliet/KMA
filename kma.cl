@@ -327,7 +327,7 @@ free(__global struct clheap *heap, uintptr_t block)
 
 	/* Index of this block */
 	block -= (uintptr_t) sb;
-	block -= (8 + sizeof(clIndexedQueue_item));
+	block -= (12 + sizeof(clIndexedQueue_item));
 	block /= size;
 
 	/* Update the "taken" bit

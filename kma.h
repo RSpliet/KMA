@@ -74,7 +74,8 @@ struct kma_sb {
 					  or build a container_of()*/
 	volatile unsigned int state; 	/**< Slots, slots free */
 	unsigned int size;		/**< Size of a block */
-	char data[KMA_SB_SIZE - 8 - sizeof(clIndexedQueue_item)];	/**< Rest of the header */
+	unsigned int __padding;  /** Padding to avoid memory write bug on x64 nvidia gpus */
+	char data[KMA_SB_SIZE - 12 - sizeof(clIndexedQueue_item)];	/**< Rest of the header */
 };
 
 /* This heap administration will take up 1 superblock */
